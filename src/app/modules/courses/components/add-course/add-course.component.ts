@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-add-course',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './add-course.component.scss'
 })
 export class AddCourseComponent {
+
+  course = ''
+  public findCourse(): void {
+    console.log(this.course)
+  }
 
 }

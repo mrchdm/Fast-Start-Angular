@@ -12,4 +12,14 @@ export class AddCourseComponent {
     console.log(this.course)
   }
 
+
+
+  enteredSearchValue = '';
+
+  @Output()
+  searchTextChanged: EventEmitter<string> = new EventEmitter<string>();
+
+  public searchCourse(): void {
+    this.searchTextChanged.emit(this.enteredSearchValue);
+  }
 }

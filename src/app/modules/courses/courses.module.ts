@@ -10,6 +10,11 @@ import { ButtonModule } from 'primeng/button';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
+import { DurationPipe } from './pipes/duration.pipe';
+import '@angular/common/locales/global/ru';
+import { FilterPipe } from './pipes/filter.pipe';
+import { OrderByPipe } from './pipes/order-by.pipe';
+import { HightlightBorderDirective } from './directives/hightlight-border.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +23,10 @@ import { FormsModule } from '@angular/forms';
     BreadcrumbsComponent,
     AddCourseComponent,
     CoursesComponent,
+    DurationPipe,
+    FilterPipe,
+    OrderByPipe,
+    HightlightBorderDirective,
 
   ],
   imports: [

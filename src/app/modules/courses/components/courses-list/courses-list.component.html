@@ -1,10 +1,26 @@
+<app-add-course (searchTextChanged)="onSearchTextEntered($event)"></app-add-course>
 <div class="flex flex-column gap-4 py-2 px-6  py-12 px-12 align-items-center">
 
-    <div class="flex justify-content-between align-items-center flex-wrap gap-4">
-      <app-course class='flex flex-column' *ngFor="let course of courses" [course]="course" (delete)="deleteCourse($event)" (edit)="editCourse($event)"></app-course>
+  <div class="flex justify-content-between align-items-center flex-wrap gap-4">
+    <app-course class='flex flex-column' *ngFor="let course of courses | filter : searchText" [course]="course"
+      (delete)="deleteCourse($event)" (edit)="editCourse($event)"></app-course>
+  </div>
+
+  <!-- ничего не найдено -->
+
+  <div *ngIf="!(courses | filter : searchText ).length"
+    class="flex align-items-center flex-column surface-card border-round min-w-full p-6">
+    <div class="bg-blue-100 "style="border-radius:100%;">
+      <i class="pi  pi-ban p-8 " style="color: var(--primary-color); font-size: 6rem"></i>
     </div>
-    
-    <button pButton (click)='loadMore()' class="load-more-btn" label="Загрузить еще" severity="secondary" [outlined]="true" size="large"></button>
+    <p class="font-medium text-2xl">Ничего не найдено</p>
+    <button pButton>Сбросить фильтры</button>
+  </div>
+
+
+  <!-- загрузить еще -->
+  <div *ngIf="(courses | filter : searchText ).length">
+    <button pButton (click)='loadMore()' class="load-more-btn" label="Загрузить еще" severity="secondary"
+      [outlined]="true" size="large"></button>
+  </div>
 </div>
-
-

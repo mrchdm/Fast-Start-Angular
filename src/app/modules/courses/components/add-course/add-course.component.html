@@ -2,9 +2,10 @@
     <div>
         <span class="p-input-icon-left mr-3">
             <i class="pi pi-search"></i>
-            <input type="text" type="text" [(ngModel)]="course" pInputText placeholder="Поиск" />
+            <input type="text" type="text"  [(ngModel)]="enteredSearchValue"
+          pInputText placeholder="Поиск" />
         </span>
-        <button (click)="findCourse()" pButton class="search-btn p-button-label" label="Найти"></button>
+        <button  (click)="searchCourse()" pButton class="search-btn p-button-label" label="Найти"></button>
     </div>
     <div>
         <p-button label="Добавить курс" icon="pi pi-plus"></p-button>

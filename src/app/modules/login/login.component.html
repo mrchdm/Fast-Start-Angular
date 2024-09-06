@@ -1,1 +1,18 @@
-<p>login works!</p>
+<div class="login_page__container flex justify-content-center p-4">
+<div class="login__container flex flex-column  surface-card border-round   p-4">
+    <h2 class="m-0 font-medium text-2xl">Вход</h2>
+    <div class="flex flex-column gap-2 my-4">
+        <label htmlFor="username">Email*</label>
+        <input pInputText id="username" [(ngModel)]="userLogin" placeholder="Например user@domain.com" aria-describedby="username-help" />
+    </div>
+    <div class="flex flex-column gap-2 mb-4 ">
+        <label htmlFor="username">Пароль*</label>
+        <input pInputText id="username" [(ngModel)]="userPassword" placeholder="Ваш пароль" aria-describedby="username-help" />
+    </div>
+    <div class="flex flex-row justify-content-between ">
+        <p style="color: var(--primary-color); text-decoration: underline;">Забыли пароль?</p>
+        <button pButton type="submit" (click)="login()">Войти</button>
+    </div>
+</div>
+</div>
+

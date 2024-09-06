@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './modules/login/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fast-start-angular';
+
+
+  isAuthenticated = true;
+
+  constructor(private readonly authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.isAuthenticated = this.authService.isAuthenticated();
+  }
+
+  isAuth(isAuthenticated: boolean) {
+    this.isAuthenticated = isAuthenticated;
+  }
 }

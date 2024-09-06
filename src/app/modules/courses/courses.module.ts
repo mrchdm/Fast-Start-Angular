@@ -15,6 +15,7 @@ import '@angular/common/locales/global/ru';
 import { FilterPipe } from './pipes/filter.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { HightlightBorderDirective } from './directives/hightlight-border.directive';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { HightlightBorderDirective } from './directives/hightlight-border.direct
     ButtonModule,
     BreadcrumbModule,
     InputTextModule,
-    FormsModule
+    FormsModule,
+    ConfirmDialogModule,
+
     
   ],
   exports: [

@@ -3,7 +3,7 @@
 
   <div class="flex justify-content-between align-items-center flex-wrap gap-4">
     <app-course class='flex flex-column' *ngFor="let course of courses | filter : searchText" [course]="course"
-      (delete)="deleteCourse($event)" (edit)="editCourse($event)"></app-course>
+      (delete)="deleteCourseConfirmDialog($event)" (edit)="editCourse($event)"></app-course>
   </div>
 
   <!-- ничего не найдено -->
@@ -24,3 +24,8 @@
       [outlined]="true" size="large"></button>
   </div>
 </div>
+
+
+<p-confirmDialog [style]="{ minWidth: '40vw' }"> 
+
+</p-confirmDialog>

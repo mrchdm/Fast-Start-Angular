@@ -1,6 +1,7 @@
 import { ICourse } from '../../../../types/course';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
@@ -14,7 +15,7 @@ export class CourseComponent {
     this.edit.emit(this.course);
   }
 
-  public deleteCourse(): void {
+  public deleteCourseConfirmDialog(): void {
     this.delete.emit(this.course);
   }
 }

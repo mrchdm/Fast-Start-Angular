@@ -1,40 +1,59 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ICourse } from '../../../../types/course';
+import { CoursesService } from '../../services/courses.service';
+import { ConfirmationService, PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
-  styleUrl: './courses-list.component.scss'
+  styleUrl: './courses-list.component.scss',
+  providers: [ConfirmationService], 
 })
 export class CoursesListComponent implements OnInit {
 
-public searchText: string = '';
-public courses: ICourse[]=[]
-public ngOnInit(): void {
-    this.courses = [
-      {title: "CourseName", id: 1, topRated: true,creationDate: new Date(2023, 8 ,8),  duration: 60, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, explicabo, dignissimos quas quam reprehenderit doloribus ipsum ullam aliquid, quod saepe voluptates laborum officia vitae a sapiente. Ducimus perferendis impedit quam.'},  
-      {title: "CourseName", id: 1, topRated: true,creationDate: new Date(2023, 0 ,1),  duration: 60, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, explicabo, dignissimos quas quam reprehenderit doloribus ipsum ullam aliquid, quod saepe voluptates laborum officia vitae a sapiente. Ducimus perferendis impedit quam.'}, 
-      {title: "CourseName", id: 1, topRated: true,creationDate: new Date(2015, 0 ,8),  duration: 60, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, explicabo, dignissimos quas quam reprehenderit doloribus ipsum ullam aliquid, quod saepe voluptates laborum officia vitae a sapiente. Ducimus perferendis impedit quam.'}, 
-      {title: "CourseName", id: 1, topRated: true,creationDate: new Date(2025, 12 ,20),  duration: 60, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, explicabo, dignissimos quas quam reprehenderit doloribus ipsum ullam aliquid, quod saepe voluptates laborum officia vitae a sapiente. Ducimus perferendis impedit quam.'}, 
-      {title: "CourseName", id: 1, topRated: true,creationDate: new Date(2024, 8 ,20),  duration: 60, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, explicabo, dignissimos quas quam reprehenderit doloribus ipsum ullam aliquid, quod saepe voluptates laborum officia vitae a sapiente. Ducimus perferendis impedit quam.'}, 
-      {title: "CourseName", id: 1, topRated: true,creationDate: new Date(2024, 7 ,13),  duration: 60, description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, explicabo, dignissimos quas quam reprehenderit doloribus ipsum ullam aliquid, quod saepe voluptates laborum officia vitae a sapiente. Ducimus perferendis impedit quam.'}, 
-   
-    ]
-}
+  public searchText: string = '';
+  public courses: ICourse[] = []
+  constructor(public readonly coursesService: CoursesService, private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig) { }
+  public ngOnInit(): void {
+    this.courses = this.coursesService.getList();
+  }
 
-public loadMore(): void{
-  console.log('load more');
-}
+  public loadMore(): void {
+    console.log('load more');
+  }
 
-public editCourse(course: ICourse): void {
- console.log(course);
-}
+  public editCourse(course: ICourse): void {
+    console.log(course);
+  }
 
-public deleteCourse(course: ICourse): void {
-  console.log(course.id);
- }
+  public deleteCourse(course: ICourse): void {
+    this.coursesService.removeItem(course);
+    this.courses = this.coursesService.getList()
+    console.log('удалили курс')
+  }
 
- public onSearchTextEntered(searchValue: string) {
-  this.searchText = searchValue;} 
+  public onSearchTextEntered(searchValue: string) {
+    this.searchText = searchValue;
+  }
+
+
+
+  deleteCourseConfirmDialog(course: ICourse) {
+     
+    this.confirmationService.confirm({
+    message: `Вы уверены, что хотите удалить курс ${course.title} ?`,
+    header: 'Удалить курс',
+    defaultFocus: "none", 
+    dismissableMask: true,
+    accept: () => this.deleteCourse(course),
+    acceptButtonStyleClass: 'p-button-danger',
+    acceptLabel: 'Удалить',
+    acceptIcon: 'null',
+    reject: () => this.confirmationService.close(),
+    rejectLabel: 'Отмена',
+    rejectButtonStyleClass: 'p-button-text',
+    rejectIcon: 'null'
+  }); }
+
 }
 

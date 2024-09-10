@@ -16,7 +16,12 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { HightlightBorderDirective } from './directives/hightlight-border.directive';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-
+import { AddEditCourseFormComponent } from './components/add-edit-course-form/add-edit-course-form.component';
+import { CalendarModule } from 'primeng/calendar';
+import { TagModule } from 'primeng/tag';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { AuthorsComponent } from './components/authors/authors.component';
 @NgModule({
   declarations: [
     CourseComponent,
@@ -28,6 +33,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     FilterPipe,
     OrderByPipe,
     HightlightBorderDirective,
+    AddEditCourseFormComponent,
+    AuthorsComponent,
+
 
   ],
   imports: [
@@ -38,7 +46,10 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     InputTextModule,
     FormsModule,
     ConfirmDialogModule,
-
+    CalendarModule,
+    InputNumberModule ,
+    TagModule,
+    InputTextareaModule
     
   ],
   exports: [

@@ -1,0 +1,24 @@
+<div class="py-2 px-6  py-12 px-12">
+    <p-card class="">
+        <div class="add-edit-form_container flex flex-column gap-4">
+            <h2  class=" font-medium text-2xl">Новый курс</h2>
+            <input [(ngModel)]="title" pInputText id="username" placeholder="Наименование*" aria-describedby="username-help" />
+            <textarea [(ngModel)]="description" pInputTextarea rows="5" placeholder="Описание*" cols="30"></textarea>
+            <div class="duration_container gap-4 ">
+               <div class="duration-input_wrapper  ">
+                <p-inputNumber [(ngModel)]="duration" placeholder="Продолжительность*" mode="decimal" (onInput)="sendMinutes()" [(ngModel)]="min"
+                    [showButtons]="true" inputId="minmax-buttons" [min]="0" [step]="10">
+                </p-inputNumber>
+            </div>
+                <p *ngIf="min">{{min | duration}}</p>
+            </div>
+            <p-calendar [(ngModel)]="creationDate" placeholder="Дата*" [showIcon]="true"></p-calendar>
+            <app-authors></app-authors>
+            <div>
+                <p-button (click)="cancelChanges()" label="Отмена" [link]="true"></p-button>
+                <p-button (click)="saveCourse()" label="Сохранить"></p-button>
+            </div>
+        </div>
+
+    </p-card>
+</div>

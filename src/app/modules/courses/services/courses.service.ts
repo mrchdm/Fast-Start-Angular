@@ -17,17 +17,23 @@ export class CoursesService {
   public getList(): ICourse[] {
     return this.courses
   }
-  public createCourse(): void{
- 
+  public createCourse(course: ICourse): void {
+    this.courses.push(course)
   }
-  public getItemById(): void {
-  
+  public getItemById(id: number): ICourse | undefined {
+    return this.courses.find(x => x.id == id);
   }
-  public updateItem(): void {
-   
+  public updateItem(id: number, newData: ICourse): void {
+    let item: ICourse | undefined = this.getItemById(id);
+    if (!item) return;
+    item.title = newData.title;
+    item.topRated = newData.topRated;
+    item.creationDate = newData.creationDate;
+    item.duration = newData.duration;
+    item.description = newData.description;
   }
   public removeItem(course: ICourse): ICourse[] {
-   return this.courses = this.courses.filter(c => c.id != course.id)
+    return this.courses = this.courses.filter(c => c.id != course.id)
   }
 
 

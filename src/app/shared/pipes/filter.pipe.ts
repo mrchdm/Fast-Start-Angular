@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ICourse } from '../../../types/course';
+import { ICourse } from '../../types/course';
+
 
 @Pipe({
   name: 'filter'

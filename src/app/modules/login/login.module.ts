@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { FooterComponent } from '../../shared/components/footer/footer.component';
+import  HeaderComponent  from '../../shared/components/header/header.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -20,7 +20,8 @@ import LoginComponent from "./login.component"
     CardModule,
     ButtonModule,
     BreadcrumbModule,
- 
+    // HeaderComponent,
+    // FooterComponent
     
   ],
   exports: [

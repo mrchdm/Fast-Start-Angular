@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ICourse } from '../../../../types/course';
 import { CoursesService } from '../../services/courses.service';
 import { ConfirmationService, PrimeNGConfig } from 'primeng/api';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-courses-list',
@@ -13,7 +14,8 @@ export class CoursesListComponent implements OnInit {
 
   public searchText: string = '';
   public courses: ICourse[] = []
-  constructor(public readonly coursesService: CoursesService, private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig) { }
+
+  constructor(public readonly coursesService: CoursesService, private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig,  private readonly router: Router) { }
   public ngOnInit(): void {
     this.courses = this.coursesService.getList();
   }
@@ -22,8 +24,8 @@ export class CoursesListComponent implements OnInit {
     console.log('load more');
   }
 
-  public editCourse(course: ICourse): void {
-    console.log(course);
+  editCourse(course: ICourse): void {
+    this.router.navigate(['courses/' + course.id]);
   }
 
   public deleteCourse(course: ICourse): void {

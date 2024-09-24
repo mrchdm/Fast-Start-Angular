@@ -1,13 +1,13 @@
 <div class="app-container" >
 <app-header [isAuthenticated]="isAuthenticated" ></app-header>
 
-<app-courses *ngIf="isAuthenticated"></app-courses>
+<!-- <app-courses *ngIf="isAuthenticated"></app-courses>
 
 
 <app-login *ngIf="!isAuthenticated"
 (isAuthenticated)="isAuth($event)"
-></app-login>
-
+></app-login> -->
+<router-outlet></router-outlet>
 <app-footer></app-footer>
 
 </div>

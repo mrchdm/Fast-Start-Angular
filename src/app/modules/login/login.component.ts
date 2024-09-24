@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -13,20 +15,21 @@ export  default class LoginComponent implements OnInit  {
   userPassword: any;
 
   constructor(
-    
+    private readonly router: Router,
     private readonly authService: AuthService) {
   }
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
 
+ 
   public login() {
     this.authService.LogIn(this.userLogin, this.userPassword);
     if (this.authService.isAuthenticated()) {
       console.log("Выполнен вход в систему");
+      this.router.navigate(['courses']);
     }
-    this.isAuthenticated.emit(this.authService.isAuthenticated());
-    this.authService.GetUserInfo();
   }
-
 }
+
+
